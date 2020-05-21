@@ -17,6 +17,7 @@
 package com.facebook.samples.litho.playground;
 
 import android.graphics.Color;
+
 import com.facebook.litho.Column;
 import com.facebook.litho.Component;
 import com.facebook.litho.ComponentContext;
@@ -30,7 +31,8 @@ public class PlaygroundComponentSpec {
   @OnCreateLayout
   static Component onCreateLayout(ComponentContext c) {
     return Column.create(c)
-        .backgroundColor(Color.WHITE)
+        .flexGrow(1)
+        .backgroundColor(Color.RED)
         .child(Text.create(c).textSizeSp(20).text("Playground sample"))
         .build();
   }

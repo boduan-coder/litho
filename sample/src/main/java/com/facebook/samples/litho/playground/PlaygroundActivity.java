@@ -17,6 +17,9 @@
 package com.facebook.samples.litho.playground;
 
 import android.os.Bundle;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+
 import com.facebook.litho.ComponentContext;
 import com.facebook.litho.LithoView;
 import com.facebook.samples.litho.NavigatableDemoActivity;
@@ -26,8 +29,12 @@ public class PlaygroundActivity extends NavigatableDemoActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-
     final ComponentContext componentContext = new ComponentContext(this);
-    setContentView(LithoView.create(this, PlaygroundComponent.create(componentContext).build()));
+    final ViewGroup parent = new FrameLayout(this);
+    parent.addView(
+        LithoView.create(this, PlaygroundComponent.create(componentContext).build()),
+        new ViewGroup.LayoutParams(
+            ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+    setContentView(parent);
   }
 }
